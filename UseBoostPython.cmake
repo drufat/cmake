@@ -1,0 +1,15 @@
+# Create python extensions with swig
+
+FIND_PACKAGE(Python REQUIRED)
+#FIND_PACKAGE(Boost COMPONENTS python REQUIRED)
+
+MACRO(BOOST_PYTHON_MODULE name)
+
+	INCLUDE_DIRECTORIES(
+	   ${Boost_INCLUDE_DIR}
+	)
+    ADD_PYTHON_MODULE(${name} ${ARGN})
+    TARGET_LINK_LIBRARIES(${name} boost-python)
+ #   TARGET_LINK_LIBRARIES(${name} ${Boost_LIBRARIES})
+
+ENDMACRO(BOOST_PYTHON_MODULE)
